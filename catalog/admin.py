@@ -2,5 +2,20 @@ from django.contrib import admin
 from .models import Place, Image
 
 
-admin.site.register(Place)
-admin.site.register(Image)
+class ImageInline(admin.TabularInline):
+    model = Image
+    fields = ['image', 'order']
+    extra = 1
+
+
+@admin.register(Place)
+class PlaceAdmin(admin.ModelAdmin):
+    inlines = [
+      ImageInline,
+    ]
+
+
+@admin.register(Image)
+class ImageAdmin(admin.ModelAdmin):
+  pass
+# admin.site.register(Image)
