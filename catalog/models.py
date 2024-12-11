@@ -11,22 +11,22 @@ class Place(models.Model):
     lat = models.FloatField('Широта')
 
     def __str__(self):
-      return self.title
+        return self.title
 
     class Meta:
-      verbose_name = 'место'
-      verbose_name_plural = 'места'
+        verbose_name = 'место'
+        verbose_name_plural = 'места'
 
 
 class Image(models.Model):
     place = models.ForeignKey(Place, on_delete=models.CASCADE, related_name='images')
     image = models.ImageField('Картинка')
-    order = models.PositiveIntegerField(verbose_name='Позиция', default=0)
+    order = models.PositiveIntegerField(verbose_name='Позиция', default=0, db_index=True)
 
     def __str__(self):
-      return f'{self.id} - {self.place.title}'
+        return f'{self.place.title} ({self.id})'
 
     class Meta:
-      ordering = ['order']
-      verbose_name = 'фото'
-      verbose_name_plural = 'фотографии'
+        ordering = ['order']
+        verbose_name = 'фото'
+        verbose_name_plural = 'фотографии'
