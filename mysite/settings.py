@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'catalog.apps.CatalogConfig',
     'adminsortable2',
+    'tinymce',
 ]
 
 MIDDLEWARE = [
