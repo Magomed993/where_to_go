@@ -2,7 +2,7 @@ from django.urls import reverse
 from django.shortcuts import render
 from django.shortcuts import get_object_or_404
 from django.http import JsonResponse
-from catalog.models import Place
+from places.models import Place
 
 
 def index(request):
