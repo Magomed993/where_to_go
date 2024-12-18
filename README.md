@@ -2,9 +2,15 @@
 
 Проект предназначенный для поиска мест, куда можно сходить по городу Москва.
 
+![Снимок экрана от 2024-12-18 13-35-57](https://github.com/user-attachments/assets/6aa9a0d8-63bd-49e8-86ac-aed152912d69)
+
+## Демо-версия сайта
+
+[magom.pythonanywhere.com](https://magom.pythonanywhere.com/)
+
 ## Как запустить
 
-Для запуска сайта вам понадобится Python третьей версии.
+Для запуска сайта вам понадобится Python версии 3.10.
 
 Скачайте код с GitHub. Установите зависимости:
 
@@ -27,6 +33,10 @@ python3 manage.py migrate
 - `SECRET_KEY` — секретный ключ проекта
 - `BASEDIR` — полный путь к файлу базы данных SQLite, например: `/home/user/schoolbase.sqlite3`
 - `ALLOWED_HOSTS` — см [документацию Django](https://docs.djangoproject.com/en/3.1/ref/settings/#allowed-hosts)
+
+## Загрузка локаций
+
+Для загрузки локации необходимо зайти по адресу [127.0.0.1:8000/admin](http://127.0.0.1:8000/admin).
 
 ## Цели проекта
 
