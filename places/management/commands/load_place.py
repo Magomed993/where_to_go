@@ -11,7 +11,6 @@ class Command(BaseCommand):
     def add_arguments(self, parser):
         parser.add_argument('url', type=str, help='url')
 
-    @staticmethod
     def upload_pictures(place, imgs_urls):
         for num, img in enumerate(imgs_urls):
             response = requests.get(img)
@@ -31,6 +30,6 @@ class Command(BaseCommand):
                                 lat=file_format['coordinates']['lat'])
             if not created and place:
                 place.images.all().delete()
-            self.upload_pictures(place, file_format['imgs'])
+            Command.upload_pictures(place, file_format['imgs'])
         except Place.MultipleObjectsReturned:
-            print('Данное месте уже имеется')
+            print('Данное место уже имеется')
