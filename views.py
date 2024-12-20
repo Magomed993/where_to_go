@@ -1,5 +1,5 @@
 from django.shortcuts import render
 
 
-def get_start(request):
-    return render(request, 'example.html')
+def start(request):
+    return render(request, 'index.html')
