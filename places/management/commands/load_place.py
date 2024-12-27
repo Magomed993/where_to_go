@@ -10,7 +10,10 @@ class Command(BaseCommand):
     help = 'Скачивание мест по url'
 
     def add_arguments(self, parser):
-        parser.add_argument('url', nargs='+', type=str, help='Список url адресов для загрузки данных')
+        parser.add_argument('url',
+                            nargs='+',
+                            type=str,
+                            help='Список url адресов для загрузки данных')
 
     def handle(self, *args, **options):
         urls = options['url']
@@ -24,8 +27,8 @@ class Command(BaseCommand):
                     lng=json_place['coordinates']['lng'],
                     lat=json_place['coordinates']['lat'],
                     defaults={'description_short': json_place['description_short'],
-                            'description_long': json_place['description_long'],
-                            }
+                              'description_long': json_place['description_long'],
+                              }
                 )
             except MultipleObjectsReturned:
                 print('Найдено несколько мест')
@@ -35,4 +38,6 @@ class Command(BaseCommand):
                 img_response.raise_for_status()
                 image = Image(place=place)
                 image_name = place.title
-                image.img.save(image_name, ContentFile(img_response.content), save=True)
+                image.img.save(image_name,
+                               ContentFile(img_response.content),
+                               save=True)

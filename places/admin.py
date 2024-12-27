@@ -12,8 +12,10 @@ class PlaceInline(SortableStackedInline):
     extra = 0
 
     def get_preview(self, obj):
-        return format_html('<img src="{0}" width=auto height=200px />',
+        return format_html('<img src="{}" width={} height={} />',
                            obj.img.url,
+                           'auto',
+                           '200px',
                            )
 
 
@@ -27,4 +29,4 @@ class PlaceAdmin(SortableAdminBase, admin.ModelAdmin):
 
 @admin.register(Image)
 class ImageAdmin(admin.ModelAdmin):
-    pass
+    raw_id_fields = ['place']
