@@ -1,8 +1,9 @@
 import requests
 from django.core.exceptions import MultipleObjectsReturned
-from django.core.management.base import BaseCommand
 from django.core.files.base import ContentFile
-from places.models import Place, Image
+from django.core.management.base import BaseCommand
+
+from places.models import Image, Place
 
 
 class Command(BaseCommand):
