@@ -6,7 +6,9 @@ from places.models import Place, Image
 
 class PlaceInline(SortableStackedInline):
     model = Image
-    readonly_fields = ['get_preview', 'num']
+    fields = ['img', 'num', 'get_preview']
+    readonly_fields = ['get_preview']
+    extra = 0
 
     def get_preview(self, obj):
         return format_html('<img src="{0}" width=auto height=200px />',
