@@ -3,14 +3,24 @@ from tinymce.models import HTMLField
 
 
 class Place(models.Model):
-    title = models.CharField(verbose_name='Название',
-                             max_length=200)
-    description_short = models.TextField(verbose_name='Короткое описание',
-                                         blank=True)
-    description_long = HTMLField(verbose_name='Длинное описание',
-                                 blank=True)
-    lng = models.FloatField(verbose_name='Долгота')
-    lat = models.FloatField(verbose_name='Широта')
+    title = models.CharField(
+        verbose_name='Название',
+        max_length=200
+    )
+    short_description = models.TextField(
+        verbose_name='Короткое описание',
+        blank=True
+    )
+    long_description = HTMLField(
+        verbose_name='Длинное описание',
+        blank=True
+    )
+    lng = models.FloatField(
+        verbose_name='Долгота'
+    )
+    lat = models.FloatField(
+        verbose_name='Широта'
+    )
 
     class Meta:
         verbose_name = 'место'
@@ -21,14 +31,20 @@ class Place(models.Model):
 
 
 class Image(models.Model):
-    place = models.ForeignKey(Place,
-                              on_delete=models.CASCADE,
-                              verbose_name='Место',
-                              related_name='images')
-    img = models.ImageField(verbose_name='Картинки')
-    num = models.IntegerField(verbose_name='Позиция',
-                              default=0,
-                              db_index=True)
+    place = models.ForeignKey(
+        Place,
+        on_delete=models.CASCADE,
+        verbose_name='Место',
+        related_name='images'
+    )
+    img = models.ImageField(
+        verbose_name='Картинки'
+    )
+    num = models.IntegerField(
+        verbose_name='Позиция',
+        default=0,
+        db_index=True
+    )
 
     class Meta:
         ordering = ['num']
